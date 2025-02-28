@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     color: #333;
@@ -17,6 +21,9 @@ body {
     --color-light: #f5f5f5;
     --color-white: #ffffff;
     --color-text: #333333;
+}
+section {
+    scroll-margin-top: 100px; /* Ajusta según la altura de tu nav */
 }
 
 /* Utilidades */
@@ -103,6 +110,15 @@ body {
 
 .main-nav a:hover:after {
     width: 100%;
+}
+
+.main-nav-menu {
+    display: none;
+}
+
+.menu-buttom {
+    all: unset;
+    cursor: pointer;
 }
 
 .cart-icon {
@@ -595,16 +611,51 @@ body {
     }
 
     .header .container {
-        flex-direction: column;
+
         padding: 10px 20px;
     }
 
     .main-nav {
-        margin-top: 15px;
+        display: none;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        padding: 15px 0px 10px 0px;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+
+    }
+
+    .main-nav-menu {
+        display: block;
+        width: 30px;
+        height: 30px;
+        right: 0;
+    }
+
+
+    .main-nav.active {
+        display: flex;
+        opacity: 1;
+        /* Mostrar el menú */
+        max-height: 300px
+    }
+
+    .cart-icon span {
+        right: 20px;
     }
 
     .main-nav ul {
         gap: 15px;
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        /* Mostrar el menú */
+        max-height: 300px
     }
 
     .features-grid {
@@ -619,8 +670,11 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .top-bar .container,
-    .main-nav ul {
+    .main-nav {
+        display: none;
+    }
+
+    .top-bar .container {
         flex-direction: column;
         align-items: center;
         text-align: center;

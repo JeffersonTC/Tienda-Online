@@ -1,22 +1,23 @@
-// JavaScript simple para la funcionalidad básica
-document.addEventListener('DOMContentLoaded'), function () {
-    // Animación suave al hacer scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+// JavaScript para controlar el comportamiento del menú
+document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.querySelector('.menu-buttom');
+    const mainNav = document.querySelector('.main-nav');
 
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
+    menuButton.addEventListener('click', function () {
+        menuButton.classList.toggle('active');
+        mainNav.classList.toggle('active');
     });
 
-}
-        
+    // Cerrar el menú al hacer clic en un enlace del menú
+    const navLinks = document.querySelectorAll('.main-nav');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            menuButton.classList.remove('active');
+            mainNav.classList.remove('active');
+        });
+    });
+});
+
+
+
+
